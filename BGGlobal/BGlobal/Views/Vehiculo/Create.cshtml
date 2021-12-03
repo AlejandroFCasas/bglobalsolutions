@@ -1,0 +1,70 @@
+﻿@model BGlobal.Models.Vehiculo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Vehiculo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Patente" class="control-label"></label>
+                <input asp-for="Patente" class="form-control" />
+                <span asp-validation-for="Patente" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    Marca:
+                </label>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(model => model.Marca, new SelectList(ViewBag.Marca, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Marca" })
+                        @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Modelo" class="control-label"></label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Puertas" class="control-label"></label>
+                <input asp-for="Puertas" class="form-control" />
+                <span asp-validation-for="Puertas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">
+                    Titular:
+                </label>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(model => model.Titular, new SelectList(ViewBag.Titulares, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Titular" })
+                        @Html.ValidationMessageFor(model => model.Titular, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
